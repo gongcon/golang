@@ -44,3 +44,23 @@ Set Location to Login, Unlock System by click on the lock at the top left corner
 1. Restart taskgated in terminal: `killall taskgated`
 1. Codesign gdb using your certificate: `codesign -fs gdb-cert /usr/local/bin/gdb`
 1. Add "set startup-with-shell off" to `~/.gdbinit` file to avoid a message when running: "During startup program terminated with signal ?, unkown signal."
+
+## OOP
+Golang does not have `class` like Java. It uses `struct` to define the variables of a `class` and associates `func` to it, for example,
+
+```
+type Vertex struct {
+	X, Y float64
+}
+
+func (v Vertex) Abs() float64 {
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func (v *Vertex) Scale(f float64) {
+	v.X = v.X * f
+	v.Y = v.Y * f
+}
+```
+
+In this example, the function `Scale` changes the values of `X` and `Y` of the `Vertex`. It must be defined on `*Vertex` rather than `Vertex`. Otherwise, it will be passed by value (a copy of the original `Vertext` value) and won't get the changes.
